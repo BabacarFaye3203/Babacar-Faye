@@ -9,7 +9,7 @@ include 'configuration/head.html';
         <div class="header__logo-container">
           <div class="header__logo-img-cont">
             <img
-              src="images/profil.jpeg"
+              src="images/option2.png"
               alt="Ram Maheshwari Logo Image"
               class="header__logo-img"
             />
@@ -82,14 +82,21 @@ include 'configuration/head.html';
         </div>
       </div>
     </header>
-    <section id="frappe" class="home-hero">
+    <section id="hero" class="hero section dark-background">
 
-    </section>
-    <br><br><b></b>
+      <img id="frappe" src="images/option2.png" alt="" data-aos="fade-in">
+
+    <div class="container d-flex flex-column align-items-center justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
+        <h2 id="hey">HEY , I am Faye Babacar </h2><br><br>
+        <p><span class="typed" id="hey">Full Stack Developper</span></p>
+      </div>
+  </section>
+    </section><!-- /Hero Section -->
+    <!--<section id="frappe" class="home-hero"></section>-->
     <section id="about" class="about sec-pad">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main">A Propos de Moi</span>
+          <span class="heading-sec__main">A Propos</span>
           <span class="heading-sec__sub">
             Here you will find more information about me, what I do, and my
             current skills mostly in terms of programming and technology
@@ -97,31 +104,12 @@ include 'configuration/head.html';
         </h2>
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
+         <!-- <div class="row gy-4 justify-content-center">
+        <div class="col-lg-4">
             <img src="images/file (1).png"  class="img-fluid" alt="">
           </div>
-          <div class="col-lg-8 content">
-            <h2>Software Developer  </h2>
-            <br><br>
-            <h2 class="fst-italic py-3"></h2><br><br>
-            <div class="row"><br><br><br>
-              <div class="heading-sec__sub">
-                <h4>
-                  <b>.  </b>Un code bien pensé aujourd'hui, c'est une solution fiable pour demain. <br><br></h4>
-                  <h4>
-                  <b>.  </b>Votre projet mérite plus qu'une simple exécution, il mérite une attention dédiée <br><br></h4>
-                  <h4>
-                  <b>.  </b>La réussite d'un projet repose sur une communication claire et une expertise solide
-
-                </h4>
-              </div>
-            </div>
-            <p class="py-3">
-              
-            </p>
-          </div>
-        </div>
+          
+        </div>-->
 
       </div>
         <div class="about__content">
@@ -145,9 +133,28 @@ include 'configuration/head.html';
                   la réussite de votre projet sont ma priorité
               </p>
             </div>
-            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
+            <div class="row"><br>
+            <div class="heading-sec__sub">
+              <h1><b>Pourquoi devriez-vous me rejoindre ?</b></h1><br>
+                <h4>
+                  <b>.  </b>Un code bien pensé aujourd'hui, c'est une solution fiable pour demain. <br><br></h4>
+                  <h4>
+                  <b>.  </b>Votre projet mérite plus qu'une simple exécution, il mérite une attention dédiée <br><br></h4>
+                  <h4>
+                  <b>.  </b>La réussite d'un projet repose sur une communication claire et une expertise solide
+
+                </h4>
+              </div>
+            </div><br><br><br>
+            <div class="text-center">
+              <button type="button" class="btn "><a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
               >Contact</a
-            >
+            ></button>
+            <button type="button" class="btn "><a href="cv/Faya-Babacar-CV.pdf" download="Faya-Babacar-CV.pdf" class="btn btn--med btn--theme dynamicBgClr"
+              > Télécharger mon CV</a
+            ></button>
+            </div>
+            
           </div>
           <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
