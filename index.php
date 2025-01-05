@@ -1,4 +1,45 @@
 <?php
+include 'database/connectiondb.php';
+$erreur="";
+$succes="";
+if($_SERVER['REQUEST_METHOD']=='POST'){
+  if(!empty($_POST["nom"])){
+    $nom=htmlspecialchars($_POST["nom"]);
+  }else{
+    $erreur="veuiller renseigner votre nom complet svp";
+
+  }
+  if(!empty($_POST["email"])){
+    if(!preg_match("#[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+\.{1}[a-zA-Z]{2,3}#",$_POST["email"])){
+      $erreur="format email invalide";
+    }else{
+      $email=htmlspecialchars($_POST["email"]);
+    }
+  }
+  if(!empty("message")){
+    $message=htmlspecialchars($_POST["message"]);
+  }else{
+    $erreur="veuiller décrire votre besoin";
+  }
+  if(!empty($_POST["objet"])){
+    $objet=htmlspecialchars($_POST["objet"]);
+  }
+  
+}
+try{
+  $req="INSERT INTO contact(nom,email,objet,message)values(?,?,?,?)";
+  $stm=$conn->prepare($req);
+  $stm->bind_param("ssss",$nom,$email,$objet,$message);
+  $res=$stm->execute();
+  if($res){
+    header("location:index.php");
+    $succes="message envoyé avec succes";
+  }
+
+}catch(Exception){
+  //echo"erreur lors de l'envoi";
+}
+mysqli_close($conn);
 include 'configuration/head.html';
 
 
@@ -112,7 +153,7 @@ include 'configuration/head.html';
         </div>-->
 
       </div>
-        <div class="about__content">
+        <div class="text-center about__content">
           <div class="about__content-main">
             <h3 class="about__content-title">Let's Go, Faisons connaissances!</h3>
             <div class="about__content-details">
@@ -133,30 +174,9 @@ include 'configuration/head.html';
                   la réussite de votre projet sont ma priorité
               </p>
             </div>
-            <div class="row"><br>
-            <div class="heading-sec__sub">
-              <h1><b>Pourquoi devriez-vous me rejoindre ?</b></h1><br>
-                <h4>
-                  <b>.  </b>Un code bien pensé aujourd'hui, c'est une solution fiable pour demain. <br><br></h4>
-                  <h4>
-                  <b>.  </b>Votre projet mérite plus qu'une simple exécution, il mérite une attention dédiée <br><br></h4>
-                  <h4>
-                  <b>.  </b>La réussite d'un projet repose sur une communication claire et une expertise solide
-
-                </h4>
-              </div>
-            </div><br><br><br>
-            <div class="text-center">
-              <button type="button" class="btn "><a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            ></button>
-            <button type="button" class="btn "><a href="cv/Faya-Babacar-CV.pdf" download="Faya-Babacar-CV.pdf" class="btn btn--med btn--theme dynamicBgClr"
-              > Télécharger mon CV</a
-            ></button>
-            </div>
             
           </div>
-          <div class="about__content-skills">
+          <div class="text-center about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
             <div class="skills">
               <div class="skills__skill">HTML</div>
@@ -189,10 +209,33 @@ include 'configuration/head.html';
         </div>
       </div>
     </section>
+    <section class="text-center">
+    <div class=" row"><br>
+            <div class=" heading-sec__sub">
+              <h1><b>Pourquoi devriez-vous me rejoindre ?</b></h1><br>
+                <h4>
+                  <b>.  </b>Un code bien pensé aujourd'hui, c'est une solution fiable pour demain. <br><br></h4>
+                  <h4>
+                  <b>.  </b>Votre projet mérite plus qu'une simple exécution, il mérite une attention dédiée <br><br></h4>
+                  <h4>
+                  <b>.  </b>La réussite d'un projet repose sur une communication claire et une expertise solide
+
+                </h4>
+            </div>
+            </div><br><br><br>
+            <div class="text-center">
+              <button type="button" class="btn "><a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
+              >Contact</a
+            ></button>
+            <button type="button" class="btn "><a href="cv/Faya-Babacar-CV.pdf" download="Faya-Babacar-CV.pdf" class="btn btn--med btn--theme dynamicBgClr"
+              > Télécharger mon CV</a
+            ></button>
+            </div>
+    </section>
   
 <?php include 'service-about/index.html';?> 
 
-<section id="education" class="container">
+<section id="education" class="text-center container">
   <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-bg">
           <span class="heading-sec__main">EDUCATION</span>
@@ -234,7 +277,7 @@ include 'configuration/head.html';
           </span>
         </h2>
         <div class="contact__form-container">
-          <form action='contactController.php' class='contact__form' method='post'><input type='hidden' name='form-name' value='form 1' />
+          <form action='index.php' class='contact__form' method='post'><input type='hidden' name='form-name' value='form 1' />
             <div class="contact__form-field">
               <label class="contact__form-label" for="name">Nom</label>
               <input
@@ -304,7 +347,7 @@ include 'configuration/head.html';
 </section><br><br><br><br>
 
 </section>
-<section class="container" id="articles">
+<section class="text-center container" id="articles">
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">

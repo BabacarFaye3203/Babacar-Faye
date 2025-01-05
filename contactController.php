@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'database/connectiondb.php';
 $erreur="";
 $succes="";
@@ -32,7 +33,7 @@ try{
   $stm->bind_param("ssss",$nom,$email,$objet,$message);
   $res=$stm->execute();
   if($res){
-    $succes="Message envoyé avec succes";
+    $_SESSION["contact"]="message envoyé avec succes";
     header("location:index.php");
   }
 
