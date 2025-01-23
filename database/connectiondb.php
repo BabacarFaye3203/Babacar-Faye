@@ -1,7 +1,7 @@
 <?php
-$local="sql305.infinityfree.com";
-$user="if0_37610030";
-$password="AMQqZG4P0ZCvGZ";
+$local="";
+$user="";
+$password="";
 try{
     $conn= mysqli_connect($local,$user,$password);
     //echo "connexion avec succes";
